@@ -212,12 +212,18 @@
   @media (max-width:900px){ .event-tile{height:200px;} }
   .event-tile img{width:100%; height:100%; object-fit:cover; display:block;}
 
-  .gallery-strip{display:flex; gap:.8rem; margin-top:1.6rem; flex-wrap:wrap;}
+  .gallery-strip{display:flex; gap:.8rem; margin-top:1.6rem; flex-wrap:wrap; align-items:center;}
   .gallery-strip .thumb{
     width:150px; height:105px; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(10,40,60,.15);
     flex-shrink:0;
   }
   .gallery-strip .thumb img{width:100%; height:100%; object-fit:cover;}
+  .gallery-strip .iso-badge{
+    margin-left:auto; width:105px; height:105px; border-radius:50%; overflow:hidden;
+    box-shadow:0 10px 28px rgba(10,40,60,.18); background:#fff; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .gallery-strip .iso-badge img{width:100%; height:100%; object-fit:contain; display:block;}
 
   .pill{
     display:inline-block; padding:.3rem .8rem; border-radius:999px; background:rgba(0,174,239,.12);
@@ -420,6 +426,7 @@
         <div class="thumb"><img src="assets/img/australfarma-oficina1.jpg" alt="Oficina Austral Farma"></div>
         <div class="thumb"><img src="assets/img/australfarma-oficina2.jpg" alt="Oficina Austral Farma"></div>
         <div class="thumb"><img src="assets/img/australfarma-oficina3.jpg" alt="Oficina Austral Farma"></div>
+        <div class="iso-badge"><img src="assets/img/australfarma-isologo.png" alt="Austral Farma"></div>
       </div>
     </div>
   </section>
