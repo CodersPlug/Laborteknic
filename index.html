@@ -71,6 +71,11 @@
   }
   .theme-navy .distributor-label, .theme-blue .distributor-label{color:#DCEEF5;}
 
+  .cordoba-brand{display:flex; align-items:center; gap:1rem; margin-bottom:1rem;}
+  .cordoba-map{height:78px; width:auto; display:block;}
+  .sub-brand{margin:0; font-family:'Poppins',sans-serif; font-weight:700; font-size:1.7rem; color:var(--blue-dark); line-height:1.1;}
+  .cordoba-loc{font-size:.85rem; color:var(--gray); font-family:'Poppins',sans-serif; font-weight:500;}
+
   ul.bullets{list-style:none; padding:0; margin:1.3rem 0 0; display:grid; gap:.65rem;}
   ul.bullets li{
     position:relative; padding-left:1.6rem; font-size:1rem; line-height:1.5; color:var(--ink);
@@ -321,13 +326,20 @@
   <!-- 2. AUSTRAL FARMA -->
   <section class="slide theme-white" data-theme="white">
     <div class="slide-inner">
-      <span class="eyebrow">Socio comercial · Córdoba</span>
-      <h1 class="title">Austral Farma</h1>
+      <span class="eyebrow">Córdoba · Argentina</span>
+      <h1 class="title">Nuestro socio comercial</h1>
       <div class="two-col">
         <div class="photo-frame"><img src="assets/img/australfarma-edificio.jpg" alt="Edificio Austral Farma"></div>
         <div>
-          <p class="lead">Austral Farma SRL es una prestigiosa droguería ubicada en la ciudad de Córdoba, que provee integralmente insumos y equipamiento a numerosas instituciones de salud de la provincia.</p>
-          <p class="eyebrow" style="margin-top:1.2rem;">Áreas de suministro</p>
+          <div class="cordoba-brand">
+            <img class="cordoba-map" src="assets/img/cordoba-silueta.png" alt="Provincia de Córdoba">
+            <div>
+              <h2 class="sub-brand">Austral Farma</h2>
+              <span class="cordoba-loc">Ciudad de Córdoba</span>
+            </div>
+          </div>
+          <p class="lead" style="font-size:.98rem;">Austral Farma SRL es una prestigiosa droguería ubicada en la ciudad de Córdoba, que provee integralmente insumos y equipamiento a numerosas instituciones de salud de la provincia.</p>
+          <p class="eyebrow" style="margin-top:1.1rem;">Áreas de suministro</p>
           <div style="margin-top:.5rem;">
             <span class="pill">Instrumental y equipamiento</span>
             <span class="pill">Insumos médicos</span>
@@ -341,6 +353,7 @@
       <div class="gallery-strip">
         <div class="thumb"><img src="assets/img/australfarma-oficina1.jpg" alt="Oficina Austral Farma"></div>
         <div class="thumb"><img src="assets/img/australfarma-oficina2.jpg" alt="Oficina Austral Farma"></div>
+        <div class="thumb"><img src="assets/img/australfarma-oficina3.jpg" alt="Oficina Austral Farma"></div>
       </div>
     </div>
   </section>
