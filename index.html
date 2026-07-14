@@ -127,22 +127,42 @@
     .equip-media{max-width:520px;}
   }
 
-  /* Reactivos · tira de imágenes + paneles */
-  .react-layout{grid-template-columns:.85fr 1.15fr; gap:2.2rem; align-items:start;}
-  .react-strip{display:flex; flex-direction:column; gap:.7rem;}
-  .react-strip img{width:100%; height:clamp(96px,13vh,132px); object-fit:cover; border-radius:14px; box-shadow:var(--shadow); display:block;}
-  .panels-title{margin:.2rem 0 .7rem;}
+  /* Reactivos · collage + paneles con iconos */
+  .react-layout{grid-template-columns:.95fr 1.05fr; gap:2rem; align-items:start;}
+  .react-collage{
+    display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,minmax(72px,1fr));
+    gap:.55rem; height:clamp(280px,48vh,420px);
+  }
+  .react-collage img{
+    width:100%; height:100%; object-fit:cover; border-radius:12px; display:block;
+    box-shadow:0 8px 20px rgba(10,40,60,.16);
+  }
+  .react-collage img:nth-child(1){grid-column:1 / 3; grid-row:1 / 3;}
+  .react-collage img:nth-child(2){grid-column:3; grid-row:1;}
+  .react-collage img:nth-child(3){grid-column:3; grid-row:2;}
+  .react-collage img:nth-child(4){grid-column:1; grid-row:3;}
+  .react-collage img:nth-child(5){grid-column:2; grid-row:3;}
+  .react-collage img:nth-child(6){grid-column:3; grid-row:3;}
+
+  .panels-title{margin:.2rem 0 .65rem;}
+  .panel-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:.45rem .7rem;}
+  .panel-item{
+    display:flex; align-items:center; gap:.55rem;
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:.86rem; color:var(--ink);
+    background:#fff; border:1px solid rgba(20,80,120,.1); border-radius:12px;
+    padding:.4rem .65rem .4rem .45rem; box-shadow:0 4px 14px rgba(10,40,60,.06);
+  }
+  .panel-item img{width:32px; height:32px; border-radius:50%; object-fit:cover; flex:none;}
+
   .assay-grid{display:grid; grid-template-columns:1fr 1fr; gap:.55rem .9rem; margin-top:.8rem;}
   .assay-grid .assay{
     display:flex; align-items:center; gap:.55rem; font-size:.92rem; line-height:1.3; color:var(--ink);
     padding:.55rem .75rem; border:1px solid rgba(20,80,120,.14); border-radius:10px; background:rgba(20,120,180,.04);
   }
-  .theme-navy .assay-grid .assay{color:#EAF6FC; border-color:rgba(140,200,235,.22); background:rgba(140,200,235,.07);}
   .assay-grid .assay::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--blue); flex:none;}
   @media (max-width:820px){
     .react-layout{grid-template-columns:1fr;}
-    .react-strip{flex-direction:row; flex-wrap:wrap;}
-    .react-strip img{width:calc(33% - .5rem);}
+    .panel-grid{grid-template-columns:1fr 1fr;}
     .assay-grid{grid-template-columns:1fr;}
   }
 
@@ -661,26 +681,38 @@
     <div class="slide-inner">
       <div class="equip-topbar">
         <div>
-          <span class="eyebrow">Química Clínica · BioSystems</span>
+          <span class="eyebrow">Química Clínica · Reactivos</span>
           <h1 class="title">Reactivos</h1>
         </div>
         <div class="logo-badge sm"><img src="assets/img/biosystems-logo.png" alt="BioSystems"></div>
       </div>
       <div class="two-col react-layout">
-        <div class="react-strip">
+        <div class="react-collage">
           <img src="assets/img/biosystems-react-1.jpg" alt="Reactivos BioSystems">
           <img src="assets/img/biosystems-react-2.jpg" alt="Reactivos BioSystems">
           <img src="assets/img/biosystems-react-3.jpg" alt="Reactivos BioSystems">
+          <img src="assets/img/biosystems-react-4.jpg" alt="Reactivos BioSystems">
+          <img src="assets/img/biosystems-react-5.jpg" alt="Reactivos BioSystems">
+          <img src="assets/img/biosystems-react-6.jpg" alt="Reactivos BioSystems">
         </div>
         <div>
-          <p class="lead" style="font-size:.95rem;">Una línea completa de reactivos dedicados y generales, con reputación de excelencia y rendimiento, organizada por paneles según la especialidad clínica.</p>
-          <p class="eyebrow panels-title" style="margin-top:1.1rem;">Paneles disponibles</p>
-          <div>
-            <span class="pill">Anemia</span><span class="pill">Cardíaco</span><span class="pill">Diabetes</span>
-            <span class="pill">Fertilidad</span><span class="pill">Gástrico</span><span class="pill">Hemostasis</span>
-            <span class="pill">Inmunidad</span><span class="pill">Infecciosas</span><span class="pill">Inflamatorio</span>
-            <span class="pill">Iones</span><span class="pill">Lípidos</span><span class="pill">Hepático</span>
-            <span class="pill">Pancreático</span><span class="pill">Renal</span>
+          <p class="lead" style="font-size:.9rem; margin:0;">Línea completa de reactivos dedicados y generales, organizada por paneles según la especialidad clínica.</p>
+          <p class="eyebrow panels-title" style="margin-top:.9rem;">Paneles disponibles</p>
+          <div class="panel-grid">
+            <div class="panel-item"><img src="assets/img/panels/panel-anemia.png" alt="">Anemia</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-cardiaco.png" alt="">Cardíaco</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-diabetes.png" alt="">Diabetes</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-fertilidad.png" alt="">Fertilidad</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-gastrico.png" alt="">Gástrico</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-hemostasis.png" alt="">Hemostasis</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-inmunidad.png" alt="">Inmunidad</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-infecciosas.png" alt="">Infecciosas</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-inflamatorio.png" alt="">Inflamatorio</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-iones.png" alt="">Iones</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-lipidos.png" alt="">Lípidos</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-hepatico.png" alt="">Hepático</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-pancreatico.png" alt="">Pancreático</div>
+            <div class="panel-item"><img src="assets/img/panels/panel-renal.png" alt="">Renal</div>
           </div>
         </div>
       </div>
@@ -697,25 +729,16 @@
         </div>
         <div class="logo-badge sm"><img src="assets/img/biosystems-logo.png" alt="BioSystems"></div>
       </div>
-      <div class="two-col react-layout">
-        <div class="react-strip">
-          <img src="assets/img/biosystems-react-4.jpg" alt="Reactivos diferenciales BioSystems">
-          <img src="assets/img/biosystems-react-5.jpg" alt="Reactivos diferenciales BioSystems">
-          <img src="assets/img/biosystems-react-6.jpg" alt="Reactivos diferenciales BioSystems">
-        </div>
-        <div>
-          <p class="lead" style="font-size:.95rem;">Ensayos especiales que complementan los paneles generales, para determinaciones poco frecuentes o de alto valor diagnóstico.</p>
-          <div class="assay-grid">
-            <div class="assay">Ácidos grasos no esterificados (NEFA)</div>
-            <div class="assay">Adenosina Deaminasa (ADA)</div>
-            <div class="assay">Oxalato</div>
-            <div class="assay">Citrato</div>
-            <div class="assay">β-Hidroxibutirato</div>
-            <div class="assay">α1-Glicoproteína ácida</div>
-            <div class="assay">Glucosa-6-fosfato deshidrogenasa</div>
-            <div class="assay">Cobre</div>
-          </div>
-        </div>
+      <p class="lead" style="font-size:.95rem; max-width:720px;">Ensayos especiales que complementan los paneles generales, para determinaciones poco frecuentes o de alto valor diagnóstico.</p>
+      <div class="assay-grid" style="margin-top:1.4rem; grid-template-columns:repeat(2,1fr); max-width:860px;">
+        <div class="assay">Ácidos grasos no esterificados (NEFA)</div>
+        <div class="assay">Adenosina Deaminasa (ADA)</div>
+        <div class="assay">Oxalato</div>
+        <div class="assay">Citrato</div>
+        <div class="assay">β-Hidroxibutirato</div>
+        <div class="assay">α1-Glicoproteína ácida</div>
+        <div class="assay">Glucosa-6-fosfato deshidrogenasa</div>
+        <div class="assay">Cobre</div>
       </div>
     </div>
   </section>
