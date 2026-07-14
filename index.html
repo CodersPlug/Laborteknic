@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laborteknic — Soluciones en Diagnóstico In Vitro</title>
+<meta name="description" content="Laborteknic: distribuidor exclusivo de BioSystems y Techlab, distribuidor oficial de Snibe y Abbott Rapid Diagnostics (Toxicología) en Argentina.">
+<link rel="icon" href="assets/img/logo-laborteknic.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#00AEEF;
+    --blue-dark:#0077A8;
+    --gray:#8C8C8C;
+    --gray-dark:#4A4A4A;
+    --ink:#1B2733;
+    --paper:#F5F8FA;
+    --white:#FFFFFF;
+    --shadow: 0 20px 50px rgba(0,40,60,0.18);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--ink);font-family:'Inter',sans-serif;}
+  #deck{position:relative;width:100%;height:100%;}
+  .slide{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; visibility:hidden;
+    transform: translateX(40px);
+    transition: opacity .55s ease, transform .55s ease;
+    padding: 6vh 6vw;
+    overflow-y:auto;
+  }
+  .slide.active{opacity:1; visibility:visible; transform:translateX(0); z-index:2;}
+  .slide-inner{max-width:1180px; width:100%; margin:0 auto;}
+
+  /* Color themes per slide */
+  .theme-navy{background:linear-gradient(135deg,#0b2a3d,#123a52 55%,#0b2a3d);}
+  .theme-paper{background:var(--paper);}
+  .theme-white{background:var(--white);}
+  .theme-blue{background:linear-gradient(135deg,#00AEEF,#0077A8);}
+
+  .eyebrow{
+    font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+    font-size:.78rem; color:var(--blue);
+  }
+  .theme-navy .eyebrow, .theme-blue .eyebrow{color:#BEEFFF;}
+  h1.title{
+    font-family:'Poppins',sans-serif; font-weight:800; margin:.35em 0 .2em; line-height:1.05;
+    font-size:clamp(1.9rem, 4.2vw, 3.4rem); color:var(--ink);
+  }
+  .theme-navy h1.title, .theme-blue h1.title{color:#fff;}
+  p.lead{font-size:clamp(1rem,1.6vw,1.25rem); color:var(--gray-dark); max-width:800px; line-height:1.55;}
+  .theme-navy p.lead, .theme-blue p.lead{color:#DCEEF5;}
+
+  .brand-logo{height:56px; object-fit:contain; margin-bottom:1.1rem;}
+
+  .logo-badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    background:#fff; border-radius:16px; padding:.9rem 1.5rem;
+    box-shadow:0 12px 30px rgba(0,20,35,.25);
+  }
+  .logo-badge img{display:block; height:56px; object-fit:contain;}
+  .logo-badge.sm{padding:.5rem 1rem; border-radius:10px;}
+  .logo-badge.sm img{height:30px;}
+
+  ul.bullets{list-style:none; padding:0; margin:1.3rem 0 0; display:grid; gap:.65rem;}
+  ul.bullets li{
+    position:relative; padding-left:1.6rem; font-size:1rem; line-height:1.5; color:var(--ink);
+  }
+  .theme-navy ul.bullets li, .theme-blue ul.bullets li{color:#EAF6FC;}
+  ul.bullets li::before{
+    content:"";position:absolute; left:0; top:.45em; width:9px; height:9px; border-radius:50%;
+    background:var(--blue);
+  }
+  .theme-blue ul.bullets li::before{background:#fff;}
+
+  .grid{display:grid; gap:1.4rem; margin-top:1.6rem;}
+  .grid-2{grid-template-columns:repeat(2,1fr);}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  .grid-4{grid-template-columns:repeat(4,1fr);}
+  @media (max-width:900px){
+    .grid-2,.grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:600px){
+    .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+  }
+
+  .card{
+    background:var(--white); border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(10,40,60,.10);
+    display:flex; flex-direction:column;
+  }
+  .card img{width:100%; height:110px; object-fit:cover; background:#eef4f7;}
+  .card .card-body{padding:.75rem .95rem .9rem;}
+  .card h3{margin:.05rem 0 .3rem; font-family:'Poppins',sans-serif; font-size:.98rem; color:var(--blue-dark);}
+  .card p{margin:0; font-size:.82rem; color:var(--gray-dark); line-height:1.4;}
+
+  .two-col{display:grid; grid-template-columns: 1.1fr .9fr; gap:2.6rem; align-items:center;}
+  @media (max-width:820px){ .two-col{grid-template-columns:1fr;} }
+  .photo-frame{
+    border-radius:18px; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .photo-frame img{width:100%; height:100%; display:block; object-fit:cover;}
+
+  .gallery-strip{display:flex; gap:.8rem; margin-top:1.6rem; flex-wrap:wrap;}
+  .gallery-strip .thumb{
+    width:150px; height:105px; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(10,40,60,.15);
+    flex-shrink:0;
+  }
+  .gallery-strip .thumb img{width:100%; height:100%; object-fit:cover;}
+
+  .pill{
+    display:inline-block; padding:.3rem .8rem; border-radius:999px; background:rgba(0,174,239,.12);
+    color:var(--blue-dark); font-size:.78rem; font-weight:600; margin:.15rem .3rem .15rem 0;
+    font-family:'Poppins',sans-serif;
+  }
+  .theme-navy .pill, .theme-blue .pill{background:rgba(255,255,255,.16); color:#fff;}
+
+  .stat-row{display:flex; gap:2.2rem; margin-top:1.8rem; flex-wrap:wrap;}
+  .stat{min-width:120px;}
+  .stat .num{font-family:'Poppins',sans-serif; font-weight:800; font-size:clamp(1.6rem,3vw,2.3rem); color:var(--blue);}
+  .theme-navy .stat .num, .theme-blue .stat .num{color:#fff;}
+  .stat .label{font-size:.82rem; color:var(--gray-dark); margin-top:.15rem;}
+  .theme-navy .stat .label, .theme-blue .stat .label{color:#CFE9F2;}
+
+  .cover{text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .cover .logo-badge{margin-bottom:1.8rem;}
+  .cover .logo-badge img{height:64px;}
+  .cover h1.title{font-size:clamp(2.2rem,5.4vw,4.2rem);}
+  .cover p.lead{max-width:680px; margin:0 auto;}
+  .cover .tagline{margin-top:2.2rem; display:flex; gap:.6rem; flex-wrap:wrap; justify-content:center;}
+
+  .closing{text-align:center;}
+  .partner-row{display:flex; gap:1.4rem; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:2.4rem;}
+
+  footer.slide-heading-icon{opacity:.9;}
+
+  /* Nav controls */
+  .nav-btn{
+    position:fixed; top:50%; transform:translateY(-50%); z-index:10;
+    width:52px; height:52px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(255,255,255,.14); color:#fff; font-size:1.4rem;
+    display:flex; align-items:center; justify-content:center;
+    backdrop-filter:blur(6px); transition:background .2s, transform .2s;
+  }
+  .nav-btn:hover{background:rgba(255,255,255,.28); transform:translateY(-50%) scale(1.06);}
+  #prevBtn{left:1.4vw;}
+  #nextBtn{right:1.4vw;}
+
+  .progress-dots{
+    position:fixed; bottom:3vh; left:50%; transform:translateX(-50%); z-index:10;
+    display:flex; gap:8px; background:rgba(0,0,0,.28); padding:8px 12px; border-radius:999px; backdrop-filter:blur(6px);
+  }
+  .progress-dots .dot{
+    width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.4); cursor:pointer; transition:all .25s;
+  }
+  .progress-dots .dot.active{background:#fff; width:22px;}
+
+  .slide-counter{
+    position:fixed; top:2.4vh; right:2vw; z-index:10; color:rgba(255,255,255,.85);
+    font-family:'Poppins',sans-serif; font-size:.82rem; letter-spacing:.05em;
+    background:rgba(0,0,0,.25); padding:6px 12px; border-radius:999px; backdrop-filter:blur(6px);
+  }
+  .brand-mark{
+    position:fixed; top:2.4vh; left:2vw; z-index:10; height:26px; opacity:.92;
+  }
+
+  @media (max-width:640px){
+    .nav-btn{width:42px; height:42px; font-size:1.15rem;}
+    .slide{padding:9vh 5.5vw 12vh;}
+  }
+</style>
+</head>
+<body>
+
+<img class="brand-mark" src="assets/img/logo-laborteknic.png" alt="Laborteknic">
+<div class="slide-counter"><span id="curNum">1</span> / <span id="totalNum">11</span></div>
+
+<div id="deck">
+
+  <!-- 0. COVER -->
+  <section class="slide theme-navy active" data-theme="navy">
+    <div class="slide-inner cover">
+      <div class="logo-badge"><img src="assets/img/logo-laborteknic.png" alt="Laborteknic"></div>
+      <span class="eyebrow">Diagnóstico in vitro · Argentina</span>
+      <h1 class="title">Soluciones integrales para laboratorios de diagnóstico</h1>
+      <p class="lead">Importación y distribución de equipamiento, reactivos e insumos para el diagnóstico in vitro. Distribuidor exclusivo de BioSystems y Techlab; distribuidor oficial de Snibe y Abbott Rapid Diagnostics — División Toxicología.</p>
+      <div class="tagline">
+        <span class="pill">Desde 2014</span>
+        <span class="pill">Soporte técnico y bioquímico</span>
+        <span class="pill">Alianza estratégica BioSystems–Techlab 2021</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. QUIENES SOMOS -->
+  <section class="slide theme-paper" data-theme="paper">
+    <div class="slide-inner">
+      <span class="eyebrow">Quiénes somos</span>
+      <h1 class="title">Laborteknic</h1>
+      <div class="two-col">
+        <div>
+          <p class="lead">Nos dedicamos a la importación de equipamiento y productos para el diagnóstico in vitro. Nuestro mayor capital es el humano: creemos que la fortaleza de los vínculos generados a través del asesoramiento profesional es la clave del éxito.</p>
+          <ul class="bullets">
+            <li>Distribuidor exclusivo de BioSystems y Techlab en Argentina.</li>
+            <li>Distribuidor oficial de Snibe y de Abbott Rapid Diagnostics, División Toxicología.</li>
+            <li>Soporte técnico y bioquímico pre y post-venta en todas las líneas comercializadas.</li>
+            <li>Respuesta rápida y capacidad de entender y resolver las necesidades del cliente.</li>
+          </ul>
+        </div>
+        <div class="photo-frame"><img src="assets/img/institucional-edificio.jpg" alt="Edificio Laborteknic"></div>
+      </div>
+      <div class="gallery-strip">
+        <div class="thumb"><img src="assets/img/institucional-showroom.jpg" alt="Showroom"></div>
+        <div class="thumb"><img src="assets/img/institucional-administracion.jpg" alt="Administración"></div>
+        <div class="thumb"><img src="assets/img/institucional-logistica.jpg" alt="Logística"></div>
+        <div class="thumb"><img src="assets/img/institucional-servicio-tecnico.jpg" alt="Servicio Técnico"></div>
+        <div class="thumb"><img src="assets/img/institucional-adv-aplicaciones.jpg" alt="ADV y Aplicaciones"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. AUSTRAL FARMA -->
+  <section class="slide theme-white" data-theme="white">
+    <div class="slide-inner">
+      <span class="eyebrow">Socio comercial · Córdoba</span>
+      <h1 class="title">Austral Farma</h1>
+      <div class="two-col">
+        <div class="photo-frame"><img src="assets/img/australfarma-edificio.jpg" alt="Edificio Austral Farma"></div>
+        <div>
+          <p class="lead">Austral Farma SRL es una prestigiosa droguería ubicada en la ciudad de Córdoba, que provee integralmente insumos y equipamiento a numerosas instituciones de salud de la provincia.</p>
+          <p class="eyebrow" style="margin-top:1.2rem;">Áreas de suministro</p>
+          <div style="margin-top:.5rem;">
+            <span class="pill">Instrumental y equipamiento</span>
+            <span class="pill">Insumos médicos</span>
+            <span class="pill">Descartables especiales</span>
+            <span class="pill">Bioseguridad</span>
+            <span class="pill">Medicamentos</span>
+            <span class="pill">Nutrición</span>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-strip">
+        <div class="thumb"><img src="assets/img/australfarma-oficina1.jpg" alt="Oficina Austral Farma"></div>
+        <div class="thumb"><img src="assets/img/australfarma-oficina2.jpg" alt="Oficina Austral Farma"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. BIOSYSTEMS EMPRESA -->
+  <section class="slide theme-navy" data-theme="navy">
+    <div class="slide-inner">
+      <span class="eyebrow">Nuestras marcas</span>
+      <h1 class="title">BioSystems</h1>
+      <div class="two-col">
+        <div>
+          <p class="lead">Fundada por el Dr. Bach en 1981, BioSystems es una compañía global con sede en Barcelona (España) que fabrica equipamiento, reactivos e insumos para las áreas de Química Clínica y Autoinmunidad, sinónimo de calidad, robustez y confiabilidad europea.</p>
+          <div class="stat-row">
+            <div class="stat"><div class="num">100+</div><div class="label">países</div></div>
+            <div class="stat"><div class="num">17</div><div class="label">plantas productivas</div></div>
+            <div class="stat"><div class="num">45 mil+</div><div class="label">laboratorios abastecidos</div></div>
+            <div class="stat"><div class="num">1981</div><div class="label">año de fundación</div></div>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <div class="logo-badge"><img src="assets/img/biosystems-logo.png" alt="BioSystems" style="height:70px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. BIOSYSTEMS QUIMICA CLINICA -->
+  <section class="slide theme-paper" data-theme="paper">
+    <div class="slide-inner">
+      <span class="eyebrow">BioSystems · Química Clínica</span>
+      <h1 class="title" style="font-size:clamp(1.7rem,3.4vw,2.7rem);">Autoanalizadores y reactivos</h1>
+      <p class="lead" style="font-size:.95rem; max-width:100%;">Autoanalizadores semi y automáticos, consumibles y materiales de referencia diseñados para el volumen y flujo de cada laboratorio, junto a una línea completa de reactivos dedicados y generales.</p>
+      <div class="grid grid-4" style="margin-top:1.1rem;">
+        <div class="card">
+          <img src="assets/img/biosystems-bts.jpg" alt="BTS">
+          <div class="card-body"><h3>BTS</h3><p>Tecnología LED (340–670 nm), software intuitivo, mínimo mantenimiento.</p></div>
+        </div>
+        <div class="card">
+          <img src="assets/img/biosystems-a15.jpg" alt="A15">
+          <div class="card-body"><h3>A15</h3><p>Capacidad óptima a bordo, configuración abierta y adaptable al usuario.</p></div>
+        </div>
+        <div class="card">
+          <img src="assets/img/biosystems-a25.jpg" alt="A25">
+          <div class="card-body"><h3>A25</h3><p>Predilución y posdilución automáticas, bajo consumo de agua.</p></div>
+        </div>
+        <div class="card">
+          <img src="assets/img/biosystems-ba400.jpg" alt="BA 400">
+          <div class="card-body"><h3>BA 400 / BA 200</h3><p>Hasta 400–560 t/h, hemólisis automática, SMART LED, módulo ISE opcional.</p></div>
+        </div>
+      </div>
+      <div class="two-col" style="margin-top:1.3rem;">
+        <div class="photo-frame" style="max-height:150px;"><img src="assets/img/biosystems-reactivos.jpg" alt="Reactivos BioSystems" style="max-height:150px;"></div>
+        <div>
+          <p class="eyebrow">Paneles de reactivos</p>
+          <div style="margin-top:.5rem;">
+            <span class="pill">Anemia</span><span class="pill">Cardíaco</span><span class="pill">Diabetes</span>
+            <span class="pill">Hepático</span><span class="pill">Renal</span><span class="pill">Iones</span>
+            <span class="pill">Inflamatorio</span><span class="pill">Inmunidad</span><span class="pill">Infecciosas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. BIOSYSTEMS AUTOINMUNIDAD -->
+  <section class="slide theme-white" data-theme="white">
+    <div class="slide-inner">
+      <span class="eyebrow">BioSystems · Autoinmunidad y ELISA</span>
+      <h1 class="title">Sistema completo de inmunofluorescencia</h1>
+      <div class="grid grid-3">
+        <div class="card">
+          <img src="assets/img/biosystems-ipro1.jpg" alt="IPro">
+          <div class="card-body"><h3>IPro</h3><p>Procesador de inmunofluorescencia. Hasta 192 muestras, lector de código de barras y DataMatrix.</p></div>
+        </div>
+        <div class="card">
+          <img src="assets/img/biosystems-mira.jpg" alt="MIRA">
+          <div class="card-body"><h3>MIRA</h3><p>Microscopio automatizado: escaneo de portaobjetos y trazabilidad completa por DataMatrix.</p></div>
+        </div>
+        <div class="card">
+          <img src="assets/img/biosystems-sistema-modular.jpg" alt="ARA">
+          <div class="card-body"><h3>ARA</h3><p>Plataforma de gestión de laboratorio: integra IPro y MIRA, almacena +100.000 imágenes, se integra al LIS.</p></div>
+        </div>
+      </div>
+      <div class="two-col" style="margin-top:2rem;">
+        <div>
+          <p class="eyebrow">Reactivos y kits</p>
+          <p class="lead" style="margin-top:.5rem;">Línea completa de kits para improntas (uso manual) y kits ELISA: ANA-HEp-2, ANCA, nDNA, anti-endomisio y más, junto a los conjugados correspondientes.</p>
+        </div>
+        <div class="photo-frame"><img src="assets/img/biosystems-elisa-kits.jpg" alt="Kits ELISA"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PREVECAL -->
+  <section class="slide theme-paper" data-theme="paper">
+    <div class="slide-inner">
+      <span class="eyebrow">BioSystems · Prevecal</span>
+      <h1 class="title">Control de calidad externo</h1>
+      <div class="two-col">
+        <div>
+          <p class="lead">Sistema Internacional de Evaluación Externa de la Calidad: programa anual de comparación de resultados entre laboratorios, con mediciones mensuales y trimestrales, acreditado según la norma ISO 17043.</p>
+          <ul class="bullets">
+            <li>Prevecal Bioquímica Humano</li>
+            <li>Prevecal HEp-2 IFA — Anticuerpos anti-nucleares HEp-2</li>
+            <li>Prevecal ANCA — Anticuerpos anti-citoplasma de neutrófilos</li>
+            <li>Prevecal nDNA — Anticuerpos anti-nDNA</li>
+            <li>Prevecal Celiac — Anti-endomisio, Anti-tTG, Anti-gliadina y DGP</li>
+          </ul>
+          <p class="lead" style="margin-top:1rem; font-size:.92rem;">Participación en línea a través de www.prevecal.net.</p>
+        </div>
+        <div class="photo-frame"><img src="assets/img/prevecal-general.jpg" alt="Prevecal"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SNIBE -->
+  <section class="slide theme-navy" data-theme="navy">
+    <div class="slide-inner">
+      <span class="eyebrow">Nuestras marcas</span>
+      <h1 class="title">SNIBE</h1>
+      <p class="lead">Shenzhen New Industries Biomedical Engineering Co., Ltd., fundada en 1995 en Shenzhen, China. Empresa biomédica especializada en instrumentos de laboratorio clínico y reactivos para diagnóstico in vitro, con un menú de más de 260 ensayos por CLIA.</p>
+      <div class="grid grid-2" style="margin-top:1.8rem;">
+        <div class="card">
+          <img src="assets/img/snibe-x3.jpg" alt="MAGLUMI X3">
+          <div class="card-body">
+            <h3>MAGLUMI® X3</h3>
+            <p>Sistema CLIA compacto. Hasta 200 pruebas/hora — 294 T/h/m². Ideal para laboratorios pequeños y medianos.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/snibe-x6.jpg" alt="MAGLUMI X6">
+          <div class="card-body">
+            <h3>MAGLUMI® X6</h3>
+            <p>Solución flexible para volumen medio/alto. Hasta 450 pruebas/hora, 112/412 muestras a bordo, hasta 2000 pruebas sin intervención.</p>
+          </div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="num">260+</div><div class="label">ensayos en el menú CLIA</div></div>
+        <div class="stat"><div class="num">1995</div><div class="label">fundación en Shenzhen</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TECHLAB -->
+  <section class="slide theme-white" data-theme="white">
+    <div class="slide-inner">
+      <span class="eyebrow">Nuestras marcas</span>
+      <h1 class="title">Techlab</h1>
+      <p class="lead">Establecida en Estados Unidos, Techlab diseña, desarrolla y fabrica kits rápidos de diagnóstico entérico distribuidos a nivel mundial. Certificación ISO 13485, acreditación MDSAP y registro ante la FDA.</p>
+      <div class="grid grid-2" style="margin-top:1.8rem;">
+        <div class="card">
+          <img src="assets/img/techlab-shiga-toxin.jpg" alt="Shiga Toxin Quik Chek">
+          <div class="card-body">
+            <h3>Shiga Toxin Quik Chek®</h3>
+            <p>Inmunoensayo enzimático rápido de membrana para la detección cualitativa simultánea y diferenciación de la toxina Shiga 1 (Stx1) y 2 (Stx2) en un único dispositivo.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/techlab-c-difficile.jpg" alt="C. Diff Quik Chek Complete">
+          <div class="card-body">
+            <h3>C. Diff Quik Chek Complete®</h3>
+            <p>Enzimoinmunoensayo rápido de membrana para la detección simultánea del antígeno GDH de Clostridium difficile y las toxinas A y B en un mismo pocillo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. ABBOTT -->
+  <section class="slide theme-paper" data-theme="paper">
+    <div class="slide-inner">
+      <span class="eyebrow">Nuestras marcas</span>
+      <h1 class="title">Abbott Rapid Diagnostics — Toxicología</h1>
+      <p class="lead">Abbott Rapid Diagnostics Argentina S.A. es la filial local de la división de diagnóstico de Abbott Laboratories. Laborteknic es Distribuidor Oficial para la División Toxicología: kits rápidos para la detección de abuso de drogas (cocaína, benzodiacepinas, THC, anfetaminas y más) y analizadores portátiles para detección en líquido bucal, con resultados en minutos.</p>
+      <div class="grid grid-3" style="margin-top:1.6rem;">
+        <div class="card">
+          <img src="assets/img/abbott-sotoxa.jpg" alt="SoToxa">
+          <div class="card-body"><h3>SoToxa™</h3><p>Sistema móvil para detección rápida de drogas en fluido oral, en el lugar de trabajo o en campo.</p></div>
+        </div>
+        <div class="card">
+          <img src="assets/img/abbott-surestep.jpg" alt="SureStep">
+          <div class="card-body"><h3>SureStep™</h3><p>Paneles multi-droga en sangre y orina: AMP, BAR, BZO, COC, THC, MET, MOP y más.</p></div>
+        </div>
+        <div class="card">
+          <img src="assets/img/abbott-twist.jpg" alt="ABON Twist">
+          <div class="card-body"><h3>ABON™</h3><p>Cassettes y screening en orina y saliva, de 1 a 10 drogas por dispositivo.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CLOSING -->
+  <section class="slide theme-blue" data-theme="blue">
+    <div class="slide-inner closing">
+      <div class="logo-badge" style="margin-bottom:1.6rem;"><img src="assets/img/logo-laborteknic.png" alt="Laborteknic" style="height:56px;"></div>
+      <h1 class="title">Cerca del laboratorio, cerca de vos</h1>
+      <p class="lead" style="margin:0 auto;">La solidez de nuestra firma se centra en el valor que le brindamos al cliente, en la respuesta rápida y en la capacidad de entender y resolver sus necesidades.</p>
+      <div class="partner-row">
+        <div class="logo-badge sm"><img src="assets/img/biosystems-logo.png" alt="BioSystems"></div>
+        <div class="logo-badge sm"><img src="assets/img/snibe-logo.png" alt="Snibe"></div>
+        <div class="logo-badge sm"><img src="assets/img/techlab-logo.png" alt="Techlab"></div>
+        <div class="logo-badge sm"><img src="assets/img/abbott-logo.png" alt="Abbott"></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<button id="prevBtn" class="nav-btn" aria-label="Anterior">&#8249;</button>
+<button id="nextBtn" class="nav-btn" aria-label="Siguiente">&#8250;</button>
+<div class="progress-dots" id="dots"></div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  const curNum = document.getElementById('curNum');
+  const totalNum = document.getElementById('totalNum');
+  let idx = 0;
+
+  totalNum.textContent = slides.length;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dotEls = Array.from(dotsWrap.children);
+
+  function goTo(i){
+    if (i < 0) i = slides.length - 1;
+    if (i >= slides.length) i = 0;
+    slides[idx].classList.remove('active');
+    dotEls[idx].classList.remove('active');
+    idx = i;
+    slides[idx].classList.add('active');
+    dotEls[idx].classList.add('active');
+    curNum.textContent = idx + 1;
+    slides[idx].scrollTop = 0;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('slide')) goTo(parseInt(params.get('slide'), 10) || 0);
+
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(idx - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(idx + 1));
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') goTo(idx + 1);
+    else if (e.key === 'ArrowLeft') goTo(idx - 1);
+  });
+
+  // Touch swipe
+  let touchStartX = null;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, {passive:true});
+  document.addEventListener('touchend', (e) => {
+    if (touchStartX === null) return;
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? idx + 1 : idx - 1);
+    touchStartX = null;
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
