@@ -20,7 +20,7 @@
     --shadow: 0 20px 50px rgba(0,40,60,0.18);
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--ink);font-family:'Inter',sans-serif;}
+  html,body{margin:0;padding:0;height:100%;overflow:hidden;background:var(--paper);font-family:'Inter',sans-serif;}
   #deck{position:relative;width:100%;height:100%;}
   .slide{
     position:absolute; inset:0;
@@ -247,7 +247,7 @@
   .cover-website{
     position:absolute; bottom:9.5vh; left:0; right:0; text-align:center;
     font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:.06em;
-    font-size:.95rem; color:#BEEFFF; z-index:1;
+    font-size:.95rem; color:var(--blue-dark); z-index:1;
   }
 
   .closing{text-align:center;}
@@ -258,28 +258,31 @@
   /* Nav controls */
   .nav-btn{
     position:fixed; top:50%; transform:translateY(-50%); z-index:10;
-    width:52px; height:52px; border-radius:50%; border:none; cursor:pointer;
-    background:rgba(255,255,255,.14); color:#fff; font-size:1.4rem;
+    width:52px; height:52px; border-radius:50%; border:1px solid rgba(0,119,168,.18); cursor:pointer;
+    background:rgba(255,255,255,.82); color:var(--blue-dark); font-size:1.4rem;
     display:flex; align-items:center; justify-content:center;
     backdrop-filter:blur(6px); transition:background .2s, transform .2s;
+    box-shadow:0 8px 24px rgba(0,40,60,.12);
   }
-  .nav-btn:hover{background:rgba(255,255,255,.28); transform:translateY(-50%) scale(1.06);}
+  .nav-btn:hover{background:#fff; transform:translateY(-50%) scale(1.06);}
   #prevBtn{left:1.4vw;}
   #nextBtn{right:1.4vw;}
 
   .progress-dots{
     position:fixed; bottom:3vh; left:50%; transform:translateX(-50%); z-index:10;
-    display:flex; gap:8px; background:rgba(0,0,0,.28); padding:8px 12px; border-radius:999px; backdrop-filter:blur(6px);
+    display:flex; gap:8px; background:rgba(255,255,255,.78); padding:8px 12px; border-radius:999px; backdrop-filter:blur(6px);
+    border:1px solid rgba(0,119,168,.14); box-shadow:0 8px 24px rgba(0,40,60,.1);
   }
   .progress-dots .dot{
-    width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.4); cursor:pointer; transition:all .25s;
+    width:8px; height:8px; border-radius:50%; background:rgba(0,119,168,.28); cursor:pointer; transition:all .25s;
   }
-  .progress-dots .dot.active{background:#fff; width:22px;}
+  .progress-dots .dot.active{background:var(--blue-dark); width:22px;}
 
   .slide-counter{
-    position:fixed; top:2.4vh; right:2vw; z-index:10; color:rgba(255,255,255,.85);
+    position:fixed; top:2.4vh; right:2vw; z-index:10; color:var(--blue-dark);
     font-family:'Poppins',sans-serif; font-size:.82rem; letter-spacing:.05em;
-    background:rgba(0,0,0,.25); padding:6px 12px; border-radius:999px; backdrop-filter:blur(6px);
+    background:rgba(255,255,255,.82); padding:6px 12px; border-radius:999px; backdrop-filter:blur(6px);
+    border:1px solid rgba(0,119,168,.14); box-shadow:0 8px 24px rgba(0,40,60,.1);
   }
   .brand-mark{
     position:fixed; top:2.4vh; left:2vw; z-index:10; height:26px; opacity:.92;
@@ -299,7 +302,7 @@
 <div id="deck">
 
   <!-- 0. COVER -->
-  <section class="slide theme-navy active" data-theme="navy">
+  <section class="slide theme-paper active" data-theme="paper">
     <div class="slide-inner cover">
       <div class="logo-badge"><img src="assets/img/logo-laborteknic.png" alt="Laborteknic"></div>
       <h1 class="title">Soluciones integrales para laboratorios de diagnóstico</h1>
@@ -338,7 +341,7 @@
   </section>
 
   <!-- 2. NUESTRAS INSTALACIONES -->
-  <section class="slide theme-white" data-theme="white">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <span class="eyebrow">Quiénes somos</span>
       <h1 class="title" style="font-size:clamp(1.8rem,3.6vw,2.9rem);">Nuestras instalaciones</h1>
@@ -373,7 +376,7 @@
   </section>
 
   <!-- 3. EVENTOS Y EXPOSICIONES -->
-  <section class="slide theme-navy" data-theme="navy">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <span class="eyebrow">Quiénes somos</span>
       <h1 class="title" style="font-size:clamp(1.8rem,3.6vw,2.9rem);">En eventos y exposiciones</h1>
@@ -392,7 +395,7 @@
   </section>
 
   <!-- 2. AUSTRAL FARMA -->
-  <section class="slide theme-white" data-theme="white">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <span class="eyebrow">Córdoba · Argentina</span>
       <h1 class="title">Nuestro socio comercial</h1>
@@ -427,7 +430,7 @@
   </section>
 
   <!-- 3. BIOSYSTEMS EMPRESA -->
-  <section class="slide theme-navy" data-theme="navy">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <span class="eyebrow">Nuestras marcas</span>
       <h1 class="title">BioSystems</h1>
@@ -449,7 +452,7 @@
   </section>
 
   <!-- 4. QUIMICA CLINICA · DIAPO TÍTULO -->
-  <section class="slide theme-navy" data-theme="navy">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <div class="section-divider">
         <div class="sd-left">
@@ -639,7 +642,7 @@
   </section>
 
   <!-- 10. QUIMICA CLINICA · REACTIVOS -->
-  <section class="slide theme-white" data-theme="white">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <div class="equip-topbar">
         <div>
@@ -703,7 +706,7 @@
   </section>
 
   <!-- 5. BIOSYSTEMS AUTOINMUNIDAD -->
-  <section class="slide theme-white" data-theme="white">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <span class="eyebrow">BioSystems · Autoinmunidad y ELISA</span>
       <h1 class="title">Sistema completo de inmunofluorescencia</h1>
@@ -754,7 +757,7 @@
   </section>
 
   <!-- 7. SNIBE -->
-  <section class="slide theme-navy" data-theme="navy">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <span class="eyebrow">Nuestras marcas</span>
       <h1 class="title">SNIBE</h1>
@@ -783,7 +786,7 @@
   </section>
 
   <!-- 8. TECHLAB -->
-  <section class="slide theme-white" data-theme="white">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <span class="eyebrow">Nuestras marcas</span>
       <h1 class="title">Techlab</h1>
@@ -831,7 +834,7 @@
   </section>
 
   <!-- 10. CLOSING -->
-  <section class="slide theme-blue" data-theme="blue">
+  <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner closing">
       <div class="logo-badge" style="margin-bottom:1.6rem;"><img src="assets/img/logo-laborteknic.png" alt="Laborteknic" style="height:56px;"></div>
       <h1 class="title">Cerca del laboratorio, cerca de vos</h1>
