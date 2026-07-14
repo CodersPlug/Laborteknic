@@ -71,6 +71,24 @@
   }
   .theme-navy .distributor-label, .theme-blue .distributor-label{color:#DCEEF5;}
 
+  /* Diapo-título de sección: título a la izquierda, logo a la derecha */
+  .section-divider{display:flex; align-items:center; justify-content:space-between; gap:3rem; width:100%; flex-wrap:wrap;}
+  .section-divider .sd-left{flex:1 1 320px;}
+  .section-divider .sd-left .eyebrow{font-size:.85rem;}
+  .section-divider .sd-title{
+    font-family:'Poppins',sans-serif; font-weight:800; line-height:1.02; margin:.3em 0 0;
+    font-size:clamp(2.4rem,5.5vw,4rem); color:#fff;
+  }
+  .section-divider .sd-rule{width:64px; height:5px; background:var(--blue); border-radius:999px; margin-top:1.4rem;}
+  .section-divider .sd-right{flex:0 0 auto;}
+
+  /* Specs highlight (autoanalizadores automáticos) */
+  .spec-list{display:grid; gap:.55rem; margin-top:.8rem;}
+  .spec-list .spec{display:flex; gap:.6rem; align-items:baseline; font-size:.9rem; line-height:1.4; color:var(--ink);}
+  .theme-navy .spec-list .spec{color:#EAF6FC;}
+  .spec-list .spec b{color:var(--blue-dark); font-family:'Poppins',sans-serif; font-weight:700; min-width:96px; display:inline-block;}
+  .theme-navy .spec-list .spec b{color:#7FD8F5;}
+
   .cordoba-brand{display:flex; align-items:center; gap:1rem; margin-bottom:1rem;}
   .cordoba-map{height:78px; width:auto; display:block;}
   .sub-brand{margin:0; font-family:'Poppins',sans-serif; font-weight:700; font-size:1.7rem; color:var(--blue-dark); line-height:1.1;}
@@ -380,39 +398,146 @@
     </div>
   </section>
 
-  <!-- 4. BIOSYSTEMS QUIMICA CLINICA -->
+  <!-- 4. QUIMICA CLINICA · DIAPO TÍTULO -->
+  <section class="slide theme-navy" data-theme="navy">
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="sd-left">
+          <span class="eyebrow">BioSystems</span>
+          <h2 class="sd-title">Química Clínica</h2>
+          <div class="sd-rule"></div>
+          <p class="lead" style="margin-top:1.3rem; max-width:520px;">Autoanalizadores semi y automáticos, consumibles y materiales de referencia, junto a una línea completa de reactivos dedicados y generales.</p>
+        </div>
+        <div class="sd-right">
+          <div class="logo-badge"><img src="assets/img/biosystems-logo.png" alt="BioSystems" style="height:64px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. AUTOANALIZADORES · LA LÍNEA -->
   <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
-      <span class="eyebrow">BioSystems · Química Clínica</span>
-      <h1 class="title" style="font-size:clamp(1.7rem,3.4vw,2.7rem);">Autoanalizadores y reactivos</h1>
-      <p class="lead" style="font-size:.95rem; max-width:100%;">Autoanalizadores semi y automáticos, consumibles y materiales de referencia diseñados para el volumen y flujo de cada laboratorio, junto a una línea completa de reactivos dedicados y generales.</p>
-      <div class="grid grid-4" style="margin-top:1.1rem;">
+      <span class="eyebrow">Química Clínica · BioSystems</span>
+      <h1 class="title" style="font-size:clamp(1.8rem,3.6vw,2.9rem);">Autoanalizadores</h1>
+      <p class="lead" style="font-size:.95rem; max-width:100%;">Una línea pensada para cada escala de laboratorio: desde equipos compactos semiautomáticos hasta autoanalizadores de alta capacidad, todos con reactivos BioSystems e integración al sistema de información del laboratorio (LIS).</p>
+      <div class="grid grid-4" style="margin-top:1.2rem;">
         <div class="card">
           <img src="assets/img/biosystems-bts.jpg" alt="BTS">
-          <div class="card-body"><h3>BTS</h3><p>Tecnología LED (340–670 nm), software intuitivo, mínimo mantenimiento.</p></div>
+          <div class="card-body"><h3>BTS</h3><p>Semiautomático compacto. Tecnología LED (340–670 nm).</p></div>
         </div>
         <div class="card">
           <img src="assets/img/biosystems-a15.jpg" alt="A15">
-          <div class="card-body"><h3>A15</h3><p>Capacidad óptima a bordo, configuración abierta y adaptable al usuario.</p></div>
+          <div class="card-body"><h3>A15</h3><p>Automático de gama de entrada, configuración abierta.</p></div>
         </div>
         <div class="card">
           <img src="assets/img/biosystems-a25.jpg" alt="A25">
-          <div class="card-body"><h3>A25</h3><p>Predilución y posdilución automáticas, bajo consumo de agua.</p></div>
+          <div class="card-body"><h3>A25</h3><p>Automático con predilución y posdilución automáticas.</p></div>
+        </div>
+        <div class="card">
+          <img src="assets/img/biosystems-ba200.jpg" alt="BA 200">
+          <div class="card-body"><h3>BA 200 / BA 400</h3><p>Alta capacidad, hasta 400–560 t/h con módulo ISE.</p></div>
+        </div>
+      </div>
+      <p class="lead" style="font-size:.88rem; margin-top:1.2rem; color:var(--gray);">Menor a mayor volumen · todos compatibles con reactivos y consumibles BioSystems.</p>
+    </div>
+  </section>
+
+  <!-- 6. AUTOANALIZADORES COMPACTOS -->
+  <section class="slide theme-white" data-theme="white">
+    <div class="slide-inner">
+      <span class="eyebrow">Química Clínica · Autoanalizadores</span>
+      <h1 class="title" style="font-size:clamp(1.7rem,3.4vw,2.6rem);">Gama compacta: BTS · A15 · A25</h1>
+      <div class="grid grid-3" style="margin-top:1.2rem;">
+        <div class="card">
+          <img src="assets/img/biosystems-bts.jpg" alt="BTS">
+          <div class="card-body">
+            <h3>BTS · Semiautomático</h3>
+            <ul class="bullets" style="margin-top:.4rem; gap:.35rem;">
+              <li>Tecnología LED (340–670 nm) para mayor precisión óptica.</li>
+              <li>Software intuitivo; conexión a PC (LIS) y dispositivos móviles.</li>
+              <li>Mantenimiento mínimo, sin recambio de lámpara y bajo consumo.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/biosystems-a15.jpg" alt="A15">
+          <div class="card-body">
+            <h3>A15 · Automático</h3>
+            <ul class="bullets" style="margin-top:.4rem; gap:.35rem;">
+              <li>Capacidad a bordo para reactivos refrigerados y no refrigerados.</li>
+              <li>Configuración abierta adaptable a los requisitos del usuario.</li>
+              <li>Diseño sostenible con bajo consumo de agua y conexión al LIS.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/img/biosystems-a25.jpg" alt="A25">
+          <div class="card-body">
+            <h3>A25 · Automático</h3>
+            <ul class="bullets" style="margin-top:.4rem; gap:.35rem;">
+              <li>Repetición de muestras con predilución y posdilución automáticas.</li>
+              <li>Estandarización óptima de reactivos y configuración abierta.</li>
+              <li>Diseño sostenible con bajo consumo de agua y conexión al LIS.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. AUTOANALIZADORES AUTOMÁTICOS DE ALTA CAPACIDAD -->
+  <section class="slide theme-paper" data-theme="paper">
+    <div class="slide-inner">
+      <span class="eyebrow">Química Clínica · Autoanalizadores</span>
+      <h1 class="title" style="font-size:clamp(1.7rem,3.4vw,2.6rem);">Alta capacidad: BA 200 · BA 400</h1>
+      <div class="grid grid-2" style="margin-top:1.2rem;">
+        <div class="card">
+          <img src="assets/img/biosystems-ba200.jpg" alt="BA 200">
+          <div class="card-body">
+            <h3>BA 200</h3>
+            <div class="spec-list">
+              <div class="spec"><b>Velocidad</b> 200 ciclos/h (300 con módulo ISE).</div>
+              <div class="spec"><b>Muestras</b> hasta 88 posiciones flexibles.</div>
+              <div class="spec"><b>ISE</b> Na⁺, K⁺, Cl⁻, Li⁺ (opcional).</div>
+              <div class="spec"><b>Óptica</b> línea base dinámica con SMART LED.</div>
+            </div>
+          </div>
         </div>
         <div class="card">
           <img src="assets/img/biosystems-ba400.jpg" alt="BA 400">
-          <div class="card-body"><h3>BA 400 / BA 200</h3><p>Hasta 400–560 t/h, hemólisis automática, SMART LED, módulo ISE opcional.</p></div>
+          <div class="card-body">
+            <h3>BA 400</h3>
+            <div class="spec-list">
+              <div class="spec"><b>Velocidad</b> 400 t/h (hasta 560 t/h con ISE).</div>
+              <div class="spec"><b>Sangre total</b> hemólisis automática.</div>
+              <div class="spec"><b>Reactivos</b> 88 posiciones refrigeradas (6–11 °C).</div>
+              <div class="spec"><b>Integración</b> LIS/LIMS (ASTM, HL7).</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="two-col" style="margin-top:1.3rem;">
-        <div class="photo-frame" style="max-height:150px;"><img src="assets/img/biosystems-reactivos.jpg" alt="Reactivos BioSystems" style="max-height:150px;"></div>
+      <p class="lead" style="font-size:.86rem; margin-top:1rem; color:var(--gray);">Ambos con rotor de muestras segmentado, estación de lavado del rotor de reacción y evaluación continua del estado de las cubetas.</p>
+    </div>
+  </section>
+
+  <!-- 8. QUIMICA CLINICA · REACTIVOS -->
+  <section class="slide theme-white" data-theme="white">
+    <div class="slide-inner">
+      <span class="eyebrow">Química Clínica · BioSystems</span>
+      <h1 class="title" style="font-size:clamp(1.7rem,3.4vw,2.6rem);">Reactivos</h1>
+      <div class="two-col">
+        <div class="photo-frame"><img src="assets/img/biosystems-reactivos.jpg" alt="Reactivos BioSystems"></div>
         <div>
-          <p class="eyebrow">Paneles de reactivos</p>
+          <p class="lead" style="font-size:.95rem;">Una línea completa de reactivos dedicados y generales, con reputación de excelencia y rendimiento, organizada por paneles según la especialidad clínica.</p>
+          <p class="eyebrow" style="margin-top:1.1rem;">Paneles disponibles</p>
           <div style="margin-top:.5rem;">
             <span class="pill">Anemia</span><span class="pill">Cardíaco</span><span class="pill">Diabetes</span>
-            <span class="pill">Hepático</span><span class="pill">Renal</span><span class="pill">Iones</span>
-            <span class="pill">Inflamatorio</span><span class="pill">Inmunidad</span><span class="pill">Infecciosas</span>
+            <span class="pill">Hepático</span><span class="pill">Pancreático</span><span class="pill">Renal</span>
+            <span class="pill">Iones</span><span class="pill">Lípidos</span><span class="pill">Inflamatorio</span>
+            <span class="pill">Inmunidad</span><span class="pill">Infecciosas</span><span class="pill">Hemostasis</span>
           </div>
+          <p class="lead" style="font-size:.86rem; margin-top:1rem; color:var(--gray);">Incluye ensayos diferenciales: NEFA, ADA, oxalato, citrato, β-hidroxibutirato, cobre y más.</p>
         </div>
       </div>
     </div>
