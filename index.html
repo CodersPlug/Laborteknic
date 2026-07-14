@@ -97,7 +97,7 @@
 
   .equip-layout{grid-template-columns:1fr 1fr; gap:2.4rem; align-items:center;}
   .equip-media{position:relative; padding-bottom:26px; padding-right:26px;}
-  .equip-media .equip-main{border-radius:18px; overflow:hidden; box-shadow:var(--shadow);}
+  .equip-media .equip-main{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); position:relative;}
   .equip-media .equip-main img{width:100%; height:clamp(260px,42vh,380px); object-fit:cover; display:block;}
   .equip-media .equip-detail{
     position:absolute; right:0; bottom:0; width:42%; max-width:210px;
@@ -106,6 +106,13 @@
   }
   .theme-navy .equip-media .equip-detail{border-color:#123a52;}
   .equip-media .equip-detail img{width:100%; height:120px; object-fit:cover; display:block;}
+  .equip-cartel{
+    position:absolute; top:1rem; left:1rem; z-index:2;
+    background:var(--blue-dark); color:#fff;
+    font-family:'Poppins',sans-serif; font-weight:700; font-size:.92rem;
+    letter-spacing:.02em; padding:.55rem 1rem; border-radius:10px;
+    box-shadow:0 10px 24px rgba(10,40,60,.28); line-height:1.1;
+  }
 
   .equip-head{display:flex; align-items:center; gap:.8rem; flex-wrap:wrap; margin-bottom:.5rem;}
   .equip-model{margin:0; font-family:'Poppins',sans-serif; font-weight:800; font-size:2rem; color:var(--blue-dark); line-height:1;}
@@ -514,7 +521,10 @@
       </div>
       <div class="two-col equip-layout">
         <div class="equip-media">
-          <div class="equip-main"><img src="assets/img/biosystems-a15.jpg" alt="A15"></div>
+          <div class="equip-main">
+            <img src="assets/img/biosystems-a15.jpg" alt="A15">
+            <div class="equip-cartel">150 test/hora</div>
+          </div>
           <div class="equip-detail"><img src="assets/img/biosystems-a15-detalle.jpg" alt="A15 detalle"></div>
         </div>
         <div class="equip-info">
@@ -549,7 +559,10 @@
       </div>
       <div class="two-col equip-layout">
         <div class="equip-media">
-          <div class="equip-main"><img src="assets/img/biosystems-a25.jpg" alt="A25"></div>
+          <div class="equip-main">
+            <img src="assets/img/biosystems-a25.jpg" alt="A25">
+            <div class="equip-cartel">240 test/hora</div>
+          </div>
           <div class="equip-detail"><img src="assets/img/biosystems-a25-detalle.jpg" alt="A25 detalle"></div>
         </div>
         <div class="equip-info">
