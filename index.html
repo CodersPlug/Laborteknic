@@ -108,6 +108,41 @@
     border-radius:18px; overflow:hidden; box-shadow:var(--shadow);
   }
   .photo-frame img{width:100%; height:100%; display:block; object-fit:cover;}
+  .photo-frame.building-frame{position:relative;}
+  .building-frame .anmat-overlay{
+    position:absolute; left:18px; bottom:18px; z-index:2;
+    height:38px; width:auto; border-radius:7px;
+    box-shadow:0 5px 16px rgba(0,0,0,.55);
+  }
+
+  /* Instalaciones: grid de áreas con epígrafe */
+  .area-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; margin-top:1.4rem;}
+  @media (max-width:900px){ .area-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .area-grid{grid-template-columns:1fr;} }
+  .area-card{
+    background:var(--white); border-radius:14px; overflow:hidden; box-shadow:0 10px 26px rgba(10,40,60,.12);
+  }
+  .area-card img{width:100%; height:150px; object-fit:cover; display:block; background:#eef4f7;}
+  .area-card .area-cap{padding:.65rem .9rem .8rem;}
+  .area-card h3{margin:0 0 .15rem; font-family:'Poppins',sans-serif; font-size:.98rem; color:var(--blue-dark);}
+  .area-card p{margin:0; font-size:.8rem; color:var(--gray-dark); line-height:1.35;}
+  @media (max-width:900px){ .area-card img{height:130px;} }
+
+  /* Galería de eventos y exposiciones */
+  .events-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.5rem;}
+  @media (max-width:900px){ .events-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .events-grid{grid-template-columns:repeat(2,1fr);} }
+  .event-tile{
+    position:relative; border-radius:14px; overflow:hidden; height:236px;
+    box-shadow:0 10px 26px rgba(10,40,60,.28); background:#0b2a3d;
+  }
+  @media (max-width:900px){ .event-tile{height:200px;} }
+  .event-tile img{width:100%; height:100%; object-fit:cover; display:block;}
+  .event-tile .tile-cap{
+    position:absolute; left:0; right:0; bottom:0; padding:.9rem .8rem .6rem;
+    background:linear-gradient(to top, rgba(4,20,32,.82), rgba(4,20,32,0));
+    color:#fff; font-family:'Poppins',sans-serif; font-weight:600; font-size:.8rem;
+  }
 
   .gallery-strip{display:flex; gap:.8rem; margin-top:1.6rem; flex-wrap:wrap;}
   .gallery-strip .thumb{
@@ -221,14 +256,64 @@
             <li>Soporte técnico y bioquímico pre y post-venta en todas las líneas comercializadas.</li>
           </ul>
         </div>
-        <div class="photo-frame"><img src="assets/img/institucional-edificio.jpg" alt="Edificio Laborteknic"></div>
+        <div class="photo-frame building-frame">
+          <img src="assets/img/institucional-edificio.jpg" alt="Edificio Laborteknic">
+          <img class="anmat-overlay" src="assets/img/logo-anmat.png" alt="ANMAT">
+        </div>
       </div>
-      <div class="gallery-strip">
-        <div class="thumb"><img src="assets/img/institucional-showroom.jpg" alt="Showroom"></div>
-        <div class="thumb"><img src="assets/img/institucional-administracion.jpg" alt="Administración"></div>
-        <div class="thumb"><img src="assets/img/institucional-logistica.jpg" alt="Logística"></div>
-        <div class="thumb"><img src="assets/img/institucional-servicio-tecnico.jpg" alt="Servicio Técnico"></div>
-        <div class="thumb"><img src="assets/img/institucional-adv-aplicaciones.jpg" alt="ADV y Aplicaciones"></div>
+    </div>
+  </section>
+
+  <!-- 2. NUESTRAS INSTALACIONES -->
+  <section class="slide theme-white" data-theme="white">
+    <div class="slide-inner">
+      <span class="eyebrow">Quiénes somos</span>
+      <h1 class="title" style="font-size:clamp(1.8rem,3.6vw,2.9rem);">Nuestras instalaciones</h1>
+      <p class="lead" style="font-size:.95rem; max-width:100%;">Un equipo integrado que acompaña cada etapa: desde la administración y el asesoramiento en aplicaciones hasta la logística, la expedición y el soporte técnico de los equipos.</p>
+      <div class="area-grid">
+        <div class="area-card">
+          <img src="assets/img/institucional-administracion.jpg" alt="Administración">
+          <div class="area-cap"><h3>Administración</h3><p>Gestión y atención comercial.</p></div>
+        </div>
+        <div class="area-card">
+          <img src="assets/img/institucional-adv-aplicaciones.jpg" alt="ADV y Aplicaciones">
+          <div class="area-cap"><h3>ADV y Aplicaciones</h3><p>Asesoramiento y soporte de aplicaciones.</p></div>
+        </div>
+        <div class="area-card">
+          <img src="assets/img/institucional-servicio-tecnico.jpg" alt="Servicio Técnico">
+          <div class="area-cap"><h3>Servicio Técnico</h3><p>Mantenimiento y soporte de equipos.</p></div>
+        </div>
+        <div class="area-card">
+          <img src="assets/img/institucional-logistica.jpg" alt="Logística">
+          <div class="area-cap"><h3>Logística</h3><p>Almacenamiento y distribución.</p></div>
+        </div>
+        <div class="area-card">
+          <img src="assets/img/institucional-expedicion.jpg" alt="Expedición">
+          <div class="area-cap"><h3>Expedición</h3><p>Preparación y despacho de pedidos.</p></div>
+        </div>
+        <div class="area-card">
+          <img src="assets/img/institucional-showroom.jpg" alt="Showroom">
+          <div class="area-cap"><h3>Showroom</h3><p>Exhibición de equipamiento.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. EVENTOS Y EXPOSICIONES -->
+  <section class="slide theme-navy" data-theme="navy">
+    <div class="slide-inner">
+      <span class="eyebrow">Quiénes somos</span>
+      <h1 class="title" style="font-size:clamp(1.8rem,3.6vw,2.9rem);">En eventos y exposiciones</h1>
+      <p class="lead" style="font-size:.95rem;">Presencia activa en congresos y ferias del sector, y jornadas de capacitación con nuestros clientes y equipos de diagnóstico.</p>
+      <div class="events-grid">
+        <div class="event-tile"><img src="assets/img/exposicion-1.jpg" alt="Stand Laborteknic"><div class="tile-cap">Stand institucional</div></div>
+        <div class="event-tile"><img src="assets/img/exposicion-2.jpg" alt="Stand Laborteknic"><div class="tile-cap">Feria del sector</div></div>
+        <div class="event-tile"><img src="assets/img/exposicion-4.jpg" alt="Stand Laborteknic"><div class="tile-cap">Exposición</div></div>
+        <div class="event-tile"><img src="assets/img/exposicion-5.jpg" alt="Stand Laborteknic"><div class="tile-cap">Exposición</div></div>
+        <div class="event-tile"><img src="assets/img/exposicion-3.jpg" alt="Stand Laborteknic"><div class="tile-cap">Congreso</div></div>
+        <div class="event-tile"><img src="assets/img/evento-1.jpg" alt="Jornada de capacitación"><div class="tile-cap">Capacitación</div></div>
+        <div class="event-tile"><img src="assets/img/evento-2.jpg" alt="Jornada de capacitación"><div class="tile-cap">Demostración de equipos</div></div>
+        <div class="event-tile"><img src="assets/img/evento-3.jpg" alt="Jornada de capacitación"><div class="tile-cap">Capacitación técnica</div></div>
       </div>
     </div>
   </section>
