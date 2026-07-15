@@ -248,10 +248,10 @@
   .stat .label{font-size:.82rem; color:var(--gray-dark); margin-top:.15rem;}
 
   .cover{text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;}
-  .cover .logo-badge{margin-bottom:1.8rem;}
-  .cover .logo-badge img{height:64px;}
+  .cover .cover-logo{display:block; height:72px; width:auto; margin-bottom:1.8rem; object-fit:contain;}
   .cover h1.title{font-size:clamp(2.2rem,5.4vw,4.2rem);}
   .cover p.lead{max-width:680px; margin:0 auto;}
+  .slide.is-cover .slide-foot .foot-logo{display:none;}
 
   .closing{text-align:center;}
   .partner-row{display:flex; gap:1.4rem; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:2.4rem;}
@@ -378,14 +378,13 @@
 <div id="deck">
 
   <!-- 1. COVER -->
-  <section class="slide theme-paper active" data-theme="paper">
+  <section class="slide theme-paper active is-cover" data-theme="paper">
     <div class="slide-inner cover">
-      <div class="logo-badge"><img src="assets/img/logo-laborteknic.png" alt="Laborteknic"></div>
+      <img class="cover-logo" src="assets/img/logo-laborteknic.png" alt="Laborteknic">
       <h1 class="title">Soluciones integrales para laboratorios de diagnóstico</h1>
     </div>
     <div class="slide-foot">
       <span class="foot-web">laborteknic.com</span>
-      <img class="foot-logo" src="assets/img/logo-laborteknic.png" alt="Laborteknic">
     </div>
   </section>
 
