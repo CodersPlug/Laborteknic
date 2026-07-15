@@ -251,10 +251,16 @@
   .cover .cover-logo{display:block; height:72px; width:auto; margin-bottom:1.8rem; object-fit:contain;}
   .cover h1.title{font-size:clamp(2.2rem,5.4vw,4.2rem);}
   .cover p.lead{max-width:680px; margin:0 auto;}
-  .slide.is-cover .slide-foot{justify-content:center;}
-  .slide.is-cover .slide-foot .foot-logo{display:none;}
+  .slide.is-cover .slide-foot,
+  .slide.is-closing .slide-foot{justify-content:center;}
+  .slide.is-cover .slide-foot .foot-logo,
+  .slide.is-closing .slide-foot .foot-logo{display:none;}
 
   .closing{text-align:center;}
+  .closing .closing-logo{
+    display:block; height:56px; width:auto; object-fit:contain;
+    margin:0 auto 1.6rem;
+  }
   .partner-row{display:flex; gap:1.4rem; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:2.4rem;}
 
   .nav-btn{
@@ -1377,9 +1383,9 @@
   </section>
 
   <!-- 28. CLOSING -->
-  <section class="slide theme-paper" data-theme="paper">
+  <section class="slide theme-paper is-closing" data-theme="paper">
     <div class="slide-inner closing">
-      <div class="logo-badge" style="margin-bottom:1.6rem;"><img src="assets/img/logo-laborteknic.png?v=2" alt="Laborteknic" style="height:56px;"></div>
+      <img class="closing-logo" src="assets/img/logo-laborteknic.png?v=2" alt="Laborteknic">
       <h1 class="title">Cerca del laboratorio, cerca de vos</h1>
       <p class="lead" style="margin:0 auto;">La solidez de nuestra firma y de nuestros socios comerciales se centra en el valor que le brindamos al cliente, en la respuesta rápida y en la capacidad de entender y resolver sus necesidades.</p>
       <div class="partner-row">
@@ -1391,7 +1397,6 @@
     </div>
     <div class="slide-foot">
       <span class="foot-web">laborteknic.com</span>
-      <img class="foot-logo" src="assets/img/logo-laborteknic.png?v=2" alt="Laborteknic">
     </div>
   </section>
 
