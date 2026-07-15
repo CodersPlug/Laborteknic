@@ -293,16 +293,15 @@
   /* Global slide footer */
   .slide-foot{
     position:absolute; left:0; right:0; bottom:7.2vh;
-    display:flex; align-items:center; justify-content:center;
-    pointer-events:none; z-index:3; padding:0 2vw;
+    display:flex; align-items:center; justify-content:space-between;
+    pointer-events:none; z-index:3; padding:0 2.2vw;
   }
   .slide-foot .foot-web{
     font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:.06em;
     font-size:.88rem; color:var(--blue-dark);
   }
   .slide-foot .foot-logo{
-    position:absolute; right:2.2vw; bottom:-2px;
-    height:26px; width:auto; opacity:.95;
+    height:26px; width:auto; opacity:.95; margin-left:auto;
   }
   .cover .cover-website{display:none;} /* superseded by slide-foot */
 
@@ -312,6 +311,10 @@
 
   .mid-brand{display:block; height:42px; width:auto; margin:.55rem 0 1rem;}
   .anmat-under{display:block; height:52px; width:auto; margin-top:.85rem;}
+  .building-frame img{
+    width:100%; height:clamp(240px, 48vh, 380px);
+    object-fit:cover; display:block;
+  }
 
   .dense-list{list-style:none; padding:0; margin:.4rem 0 0; display:grid; gap:.22rem;}
   .dense-list li{
@@ -392,10 +395,9 @@
   <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
       <span class="eyebrow">Nuestra empresa</span>
-      <h1 class="title">Laborteknic</h1>
-      <img class="mid-brand" src="assets/img/logo-laborteknic.png?v=2" alt="Laborteknic">
-      <div class="two-col">
+      <div class="two-col" style="margin-top:.85rem; align-items:start;">
         <div>
+          <h1 class="title" style="margin-top:0; font-size:clamp(1.7rem,3.4vw,2.6rem);">Laborteknic</h1>
           <p class="lead">Nos dedicamos a la importación de equipamiento y productos para el diagnóstico in vitro. Nuestro mayor capital es el humano: creemos que la fortaleza de los vínculos generados a través del asesoramiento profesional es la clave del éxito.</p>
           <div class="distributor-row">
             <span class="distributor-label">Distribuidor exclusivo</span>
