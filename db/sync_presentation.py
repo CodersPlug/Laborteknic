@@ -16,6 +16,8 @@ from pathlib import Path
 
 import duckdb
 
+from db import connect as db_connect
+
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
 HTML = REPO / "index.html"
@@ -204,7 +206,7 @@ def main() -> None:
         print("ERROR: no slides found in", HTML)
         sys.exit(1)
 
-    con = duckdb.connect(str(DB))
+    con = db_connect()
     ensure_schema(con)
     n = upsert_slides(con, slides)
     con.close()

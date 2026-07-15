@@ -59,3 +59,22 @@ CREATE TABLE IF NOT EXISTS slide_vecs (
     slide_idx  INTEGER PRIMARY KEY,
     embedding  FLOAT[384]
 );
+
+-- Leo feedback / change requests (ingest first, apply later)
+CREATE TABLE IF NOT EXISTS feedback (
+    id            VARCHAR PRIMARY KEY,
+    batch_id      VARCHAR NOT NULL,     -- e.g. 2026-07-15-am
+    seq           INTEGER NOT NULL,     -- order within batch
+    slide_n       INTEGER,              -- 1-based; NULL = global / multi-slide
+    slide_ref     VARCHAR,              -- free text: "diapo 9", "Reactivos", etc.
+    status        VARCHAR NOT NULL DEFAULT 'pending',  -- pending | applied | deferred | cancelled
+    raw_text      VARCHAR NOT NULL,     -- original comment as spoken/written
+    summary       VARCHAR,              -- short normalized ask
+    created_at    TIMESTAMP DEFAULT current_timestamp,
+    applied_at    TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS feedback_vecs (
+    feedback_id  VARCHAR PRIMARY KEY,
+    embedding    FLOAT[384]
+);
