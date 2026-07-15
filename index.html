@@ -251,6 +251,7 @@
   .cover .cover-logo{display:block; height:72px; width:auto; margin-bottom:1.8rem; object-fit:contain;}
   .cover h1.title{font-size:clamp(2.2rem,5.4vw,4.2rem);}
   .cover p.lead{max-width:680px; margin:0 auto;}
+  .slide.is-cover .slide-foot{justify-content:center;}
   .slide.is-cover .slide-foot .foot-logo{display:none;}
 
   .closing{text-align:center;}
@@ -290,18 +291,20 @@
     .slide{padding:9vh 5.5vw 14vh;}
   }
 
-  /* Global slide footer */
+  /* Global slide footer — same width/centering as .slide-inner (1180px, 5.5vw gutters) */
   .slide-foot{
-    position:absolute; left:0; right:0; bottom:7.2vh;
+    position:absolute; left:50%; bottom:7.2vh;
+    transform:translateX(-50%);
+    width:min(1180px, calc(100% - 11vw));
     display:flex; align-items:center; justify-content:space-between;
-    pointer-events:none; z-index:3; padding:0 2.2vw;
+    pointer-events:none; z-index:3; padding:0;
   }
   .slide-foot .foot-web{
     font-family:'Poppins',sans-serif; font-weight:600; letter-spacing:.06em;
     font-size:.88rem; color:var(--blue-dark);
   }
   .slide-foot .foot-logo{
-    height:26px; width:auto; opacity:.95; margin-left:auto;
+    height:26px; width:auto; opacity:.95;
   }
   .cover .cover-website{display:none;} /* superseded by slide-foot */
 
