@@ -28,7 +28,7 @@
     opacity:0; visibility:hidden;
     transform: translateX(40px);
     transition: opacity .55s ease, transform .55s ease;
-    padding: 5.5vh 5.5vw 11vh;
+    padding: 5.5vh 5.5vw 13.5vh;
     overflow-y:auto;
   }
   .slide.active{opacity:1; visibility:visible; transform:translateX(0); z-index:2;}
@@ -72,10 +72,11 @@
   .section-divider{display:flex; align-items:center; justify-content:space-between; gap:3rem; width:100%; flex-wrap:wrap;}
   .section-divider .sd-left{flex:1 1 320px;}
   .section-divider .sd-left .eyebrow{font-size:.85rem;}
-  .section-divider .sd-title{
+  .sd-title{
     font-family:'Poppins',sans-serif; font-weight:800; line-height:1.02; margin:.3em 0 0;
     font-size:clamp(2.4rem,5.5vw,4rem); color:var(--ink);
   }
+  .section-divider .sd-title{margin:.3em 0 0;}
   .section-divider .sd-rule{width:64px; height:5px; background:var(--blue); border-radius:999px; margin-top:1.4rem;}
   .section-divider .sd-right{flex:0 0 auto;}
 
@@ -87,6 +88,7 @@
   .brand-stage .brand-logo-slot{
     display:flex; align-items:center; justify-content:center;
   }
+  .brand-stage .brand-logo-slot[style*="flex-direction"]{align-items:center;}
   .brand-stage .brand-logo-slot .logo-badge img{height:70px;}
   @media (max-width:820px){
     .brand-stage{grid-template-columns:1fr; min-height:0;}
@@ -222,7 +224,7 @@
   .area-card{
     background:var(--white); border-radius:14px; overflow:hidden; box-shadow:0 10px 26px rgba(10,40,60,.12);
   }
-  .area-card img{width:100%; height:150px; object-fit:cover; display:block; background:#eef4f7;}
+  .area-card img{width:100%; height:130px; object-fit:cover; display:block; background:#eef4f7;}
   .area-card .area-cap{padding:.65rem .9rem .8rem;}
   .area-card h3{margin:0 0 .15rem; font-family:'Poppins',sans-serif; font-size:.98rem; color:var(--blue-dark);}
   .area-card p{margin:0; font-size:.8rem; color:var(--gray-dark); line-height:1.35;}
@@ -230,20 +232,20 @@
   .events-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1.5rem;}
   @media (max-width:900px){ .events-grid{grid-template-columns:repeat(2,1fr);} }
   .event-tile{
-    position:relative; border-radius:14px; overflow:hidden; height:236px;
+    position:relative; border-radius:14px; overflow:hidden; height:200px;
     box-shadow:0 10px 26px rgba(10,40,60,.28); background:#0b2a3d;
   }
-  @media (max-width:900px){ .event-tile{height:200px;} }
+  @media (max-width:900px){ .event-tile{height:170px;} }
   .event-tile img{width:100%; height:100%; object-fit:cover; display:block;}
 
-  .gallery-strip{display:flex; gap:.8rem; margin-top:1.6rem; flex-wrap:wrap; align-items:center;}
+  .gallery-strip{display:flex; gap:.65rem; margin-top:1rem; flex-wrap:wrap; align-items:center;}
   .gallery-strip .thumb{
-    width:150px; height:105px; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(10,40,60,.15);
+    width:130px; height:88px; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(10,40,60,.15);
     flex-shrink:0;
   }
   .gallery-strip .thumb img{width:100%; height:100%; object-fit:cover;}
   .gallery-strip .iso-badge{
-    margin-left:auto; width:105px; height:105px; border-radius:50%; overflow:hidden;
+    margin-left:auto; width:88px; height:88px; border-radius:50%; overflow:hidden;
     box-shadow:0 10px 28px rgba(10,40,60,.18); background:#fff; flex-shrink:0;
     display:flex; align-items:center; justify-content:center;
   }
@@ -271,7 +273,7 @@
 
   .closing{text-align:center;}
   .closing .closing-logo{
-    display:block; height:56px; width:auto; object-fit:contain;
+    display:block; height:112px; width:auto; object-fit:contain;
     margin:0 auto 1.6rem;
   }
   .partner-row{display:flex; gap:1.4rem; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:2.4rem;}
@@ -327,16 +329,34 @@
   }
   .cover .cover-website{display:none;} /* superseded by slide-foot */
 
-  .logo-badge.snibe img{height:38px;}
-  .logo-badge.sm.snibe img{height:36px;}
-  .partner-row .logo-badge.snibe img{height:40px;}
+  .logo-badge.snibe img{height:56px;}
+  .logo-badge.sm.snibe img{height:34px; width:auto;}
+  .logo-badge.sm:not(.snibe) img{height:30px;}
+  .partner-row .logo-badge.snibe img{height:48px;}
+  .brand-stage .brand-logo-slot .logo-badge.snibe img{height:70px;}
+  .equip-topbar .logo-badge.sm.snibe img{height:36px;}
 
   .mid-brand{display:block; height:42px; width:auto; margin:.55rem 0 1rem;}
-  .anmat-under{display:block; height:52px; width:auto; margin-top:.85rem;}
+  .anmat-under{display:block; height:180px; width:auto; margin-top:.75rem; object-fit:contain;}
+  .building-col{display:flex; flex-direction:column; align-items:center;}
+  .building-col .building-frame{width:100%;}
+  .building-frame img{height:clamp(200px, 38vh, 300px);}
   .building-frame img{
-    width:100%; height:clamp(240px, 48vh, 380px);
+    width:100%; height:clamp(200px, 38vh, 300px);
     object-fit:cover; display:block;
   }
+  .ensayo-photo img{width:100%; height:clamp(180px,32vh,260px); object-fit:cover; display:block;}
+  .tox-duo{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#e8eef2;}
+  .tox-duo img{width:100%; height:160px; object-fit:cover; display:block;}
+  .menu-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:.55rem .7rem; margin-top:.9rem;}
+  @media (max-width:900px){ .menu-grid{grid-template-columns:repeat(2,1fr);} }
+  .menu-panel{
+    background:#fff; border:1px solid rgba(20,80,120,.1); border-radius:12px;
+    padding:.55rem .7rem; box-shadow:0 4px 14px rgba(10,40,60,.06);
+  }
+  .menu-panel h3{margin:0 0 .25rem; font-family:'Poppins',sans-serif; font-size:.82rem; color:var(--blue-dark);}
+  .menu-panel p{margin:0; font-size:.68rem; line-height:1.35; color:var(--gray-dark);}
+  .closing .closing-logo{height:112px;}
 
   .dense-list{list-style:none; padding:0; margin:.4rem 0 0; display:grid; gap:.22rem;}
   .dense-list li{
@@ -398,7 +418,7 @@
 </head>
 <body>
 
-<div class="slide-counter"><span id="curNum">1</span> / <span id="totalNum">28</span></div>
+<div class="slide-counter"><span id="curNum">1</span> / <span id="totalNum">29</span></div>
 
 <div id="deck">
 
@@ -434,10 +454,12 @@
           <ul class="bullets" style="margin-top:1.2rem;">
             <li>Soporte técnico y bioquímico pre y post-venta en todas las líneas comercializadas.</li>
           </ul>
-          <img class="anmat-under" src="assets/img/logo-anmat.png" alt="ANMAT">
         </div>
-        <div class="photo-frame building-frame">
-          <img src="assets/img/institucional-edificio.jpg" alt="Edificio Laborteknic">
+        <div class="building-col">
+          <div class="photo-frame building-frame">
+            <img src="assets/img/institucional-edificio.jpg" alt="Edificio Laborteknic">
+          </div>
+          <img class="anmat-under" src="assets/img/logo-anmat.png" alt="ANMAT">
         </div>
       </div>
     </div>
@@ -515,7 +537,7 @@
       <span class="eyebrow">Córdoba · Argentina</span>
       <h1 class="title">Nuestro socio comercial</h1>
       <div class="two-col">
-        <div class="photo-frame"><img src="assets/img/australfarma-edificio.jpg" alt="Edificio Austral Farma"></div>
+        <div class="photo-frame building-frame"><img src="assets/img/australfarma-edificio.jpg" alt="Edificio Austral Farma"></div>
         <div>
           <div class="cordoba-brand">
             <img class="cordoba-map" src="assets/img/cordoba-silueta.png" alt="Provincia de Córdoba">
@@ -540,6 +562,7 @@
         <div class="thumb"><img src="assets/img/australfarma-oficina1.jpg" alt="Oficina Austral Farma"></div>
         <div class="thumb"><img src="assets/img/australfarma-oficina2.jpg" alt="Oficina Austral Farma"></div>
         <div class="thumb"><img src="assets/img/australfarma-oficina3.jpg" alt="Oficina Austral Farma"></div>
+        <div class="thumb"><img src="assets/img/australfarma-oficina5.jpg" alt="Oficina Austral Farma"></div>
         <div class="iso-badge"><img src="assets/img/australfarma-isologo.png" alt="Austral Farma"></div>
       </div>
     </div>
@@ -875,7 +898,7 @@
             <div class="assay">Cobre</div>
           </div>
         </div>
-        <div class="photo-frame"><img src="assets/img/biosystems-react-5.jpg" alt="Reactivos BioSystems 5"></div>
+        <div class="photo-frame ensayo-photo"><img src="assets/img/biosystems-react-5.jpg" alt="Reactivos BioSystems 5"></div>
       </div>
     </div>
     <div class="slide-foot">
@@ -891,7 +914,7 @@
         <div class="sd-left">
           <h2 class="sd-title">Autoinmunidad</h2>
           <div class="sd-rule"></div>
-          <p class="lead" style="margin-top:1.3rem; max-width:560px;">Sistemas automáticos para preparación y análisis de improntas para el diagnóstico de enfermedades autoinmunes, improntas y kits para técnicas manuales y kits para ELISA.</p>
+          <p class="lead" style="margin-top:1.3rem; max-width:560px;">Sistemas automáticos para preparación y análisis de improntas por IFI para el diagnóstico de enfermedades autoinmunes, improntas y kits para técnicas manuales y kits para ELISA.</p>
         </div>
         <div class="sd-right">
           <div class="logo-badge"><img src="assets/img/biosystems-logo.png" alt="BioSystems" style="height:64px;"></div>
@@ -909,7 +932,7 @@
     <div class="slide-inner">
       <div class="equip-topbar">
         <div>
-          <span class="eyebrow">Autoinmunidad</span>
+          <span class="eyebrow">Autoinmunidad por IFI</span>
           <h1 class="title" style="font-size:clamp(1.5rem,3vw,2.2rem);">Automatización</h1>
         </div>
         <div class="logo-badge sm"><img src="assets/img/biosystems-logo.png" alt="BioSystems"></div>
@@ -977,7 +1000,7 @@
     <div class="slide-inner">
       <div class="equip-topbar">
         <div>
-          <span class="eyebrow">Autoinmunidad</span>
+          <span class="eyebrow">Autoinmunidad por IFI</span>
           <h1 class="title" style="font-size:clamp(1.5rem,3vw,2.2rem);">Manual</h1>
         </div>
         <div class="logo-badge sm"><img src="assets/img/biosystems-logo.png" alt="BioSystems"></div>
@@ -1070,8 +1093,8 @@
     <div class="slide-inner">
       <div class="equip-topbar">
         <div>
-          <span class="eyebrow">BioSystems · Prevecal</span>
-          <h1 class="title" style="font-size:clamp(1.5rem,3vw,2.3rem);">Control de calidad externo</h1>
+          <span class="eyebrow">Control de calidad externo</span>
+          <h1 class="title" style="font-size:clamp(1.5rem,3vw,2.3rem);">Prevecal</h1>
         </div>
         <div style="display:flex; gap:.6rem; align-items:center;">
           <div class="logo-badge sm"><img src="assets/img/prevecal-logo.png" alt="Prevecal"></div>
@@ -1107,10 +1130,10 @@
   <!-- 20. SNIBE INTRO -->
   <section class="slide theme-paper" data-theme="paper">
     <div class="slide-inner">
-      <span class="eyebrow">Nuestras marcas</span>
-      <h1 class="title">SNIBE</h1>
-      <div class="two-col">
+      <div class="brand-stage">
         <div>
+          <span class="eyebrow">Nuestras marcas</span>
+          <h1 class="title">SNIBE</h1>
           <p class="lead">Shenzhen New Industries Biomedical Engineering Co., Ltd. (Snibe Co., Ltd.) se sitúa en Shenzhen, China, fundada en diciembre de 1995. Snibe es una empresa biomédica especializada en instrumentos de laboratorio clínico y reactivos para diagnóstico in vitro.</p>
           <p class="lead" style="font-size:.95rem; margin-top:.7rem;">Para el área de Autoinmunidad produce autoanalizadores por CLIA en diversas escalas según el volumen diario de procesamiento, con un extenso menú de 260 ensayos diferenciados en paneles por especialidad (Tiroides, Enfermedades Infecciosas, Autoinmunidad, Cardíaco, TORCH, Marcadores Tumorales, Monitoreo Óseo e Inflamatorio, Glucosa y más).</p>
           <div class="stat-row">
@@ -1119,8 +1142,11 @@
             <div class="stat"><div class="num">30 mil+</div><div class="label">unidades globales</div></div>
           </div>
         </div>
-        <div style="text-align:center;">
-          <div class="logo-badge snibe"><img src="assets/img/snibe-logo.png" alt="Snibe" style="height:72px;"></div>
+        <div class="brand-logo-slot" style="flex-direction:column; gap:1.1rem;">
+          <div class="logo-badge snibe"><img src="assets/img/snibe-logo.png" alt="Snibe" style="height:80px;"></div>
+          <div class="photo-frame" style="width:100%; max-width:280px; border-radius:14px; overflow:hidden;">
+            <img src="assets/img/snibe-edificio.jpg" alt="Edificio SNIBE" style="width:100%; height:200px; object-fit:cover; display:block;">
+          </div>
         </div>
       </div>
     </div>
@@ -1135,10 +1161,10 @@
     <div class="slide-inner">
       <div class="equip-topbar">
         <div>
-          <span class="eyebrow">SNIBE</span>
+          <span class="eyebrow">Autoinmunidad por CLIA</span>
           <h1 class="title">MAGLUMI® X3</h1>
         </div>
-        <div class="logo-badge sm snibe"><img src="assets/img/snibe-logo.png" alt="Snibe"></div>
+        <div class="logo-badge sm snibe"><img src="assets/img/snibe-logo.png" alt="Snibe" style="height:40px;"></div>
       </div>
       <div class="two-col equip-layout">
         <div class="equip-media">
@@ -1181,10 +1207,10 @@
     <div class="slide-inner">
       <div class="equip-topbar">
         <div>
-          <span class="eyebrow">SNIBE</span>
+          <span class="eyebrow">Autoinmunidad por CLIA</span>
           <h1 class="title">MAGLUMI® X6</h1>
         </div>
-        <div class="logo-badge sm snibe"><img src="assets/img/snibe-logo.png" alt="Snibe"></div>
+        <div class="logo-badge sm snibe"><img src="assets/img/snibe-logo.png" alt="Snibe" style="height:40px;"></div>
       </div>
       <div class="two-col equip-layout">
         <div class="equip-media">
@@ -1195,6 +1221,8 @@
           <div class="equip-detail"><img src="assets/img/snibe-x6-detalle.jpg" alt="X6 detalle"></div>
           <div class="equip-thumbs">
             <img src="assets/img/snibe-x6-detalle2.jpg" alt="X6 detalle">
+            <img src="assets/img/snibe-x6-new2.jpg" alt="X6">
+            <img src="assets/img/snibe-x6-new3.jpg" alt="X6">
           </div>
         </div>
         <div class="equip-info">
@@ -1212,6 +1240,36 @@
             <li>Pipeteo 10–280 µL con puntas desechables; STAT en todas las muestras.</li>
           </ul>
         </div>
+      </div>
+    </div>
+    <div class="slide-foot">
+      <span class="foot-web">laborteknic.com</span>
+      <img class="foot-logo" src="assets/img/logo-laborteknic.png?v=2" alt="Laborteknic">
+    </div>
+  </section>
+
+
+  <!-- 23. SNIBE MENÚ DE PRUEBAS -->
+  <section class="slide theme-paper" data-theme="paper">
+    <div class="slide-inner">
+      <div class="equip-topbar">
+        <div>
+          <span class="eyebrow">Autoinmunidad por CLIA</span>
+          <h1 class="title" style="font-size:clamp(1.5rem,3vw,2.3rem);">Menú de Pruebas MAGLUMI®</h1>
+        </div>
+        <div class="logo-badge sm snibe"><img src="assets/img/snibe-logo.png" alt="Snibe" style="height:40px;"></div>
+      </div>
+      <p class="lead" style="font-size:.92rem; margin:0;">Amplio menú de pruebas CLIA con 236 parámetros, diferenciados por especialidad.</p>
+      <div class="menu-grid">
+        <div class="menu-panel"><h3>Tiroides</h3><p>TSH (3ª gen.), T4, T3, FT4, FT3, Tg, TGA, Anti-TPO, TRAb, TMA, Rev T3, T-Uptake</p></div>
+        <div class="menu-panel"><h3>Marcadores tumorales</h3><p>AFP, CEA, PSA total/f-PSA, CA 125, CA 15-3, CA 19-9, CYFRA 21-1, NSE, HE4, HER-2, PIVKA-II</p></div>
+        <div class="menu-panel"><h3>Fertilidad</h3><p>FSH, LH, HCG/β-HCG, PRL, Estradiol, Testosterona, Progesterona, AMH, SHBG, Androstenediona</p></div>
+        <div class="menu-panel"><h3>Tamizaje prenatal</h3><p>AFP (tamizaje), Estriol libre, β-HCG libre, PAPP-A, Inhibina A, PlGF, sFlt-1</p></div>
+        <div class="menu-panel"><h3>Autoinmunidad</h3><p>ANA Screen, ENA Screen, Anti-dsDNA, Anti-Sm, Anti-Rib-P, Anti-CCP, RF IgM/IgG</p></div>
+        <div class="menu-panel"><h3>Metabolismo óseo</h3><p>Calcitonina, Osteocalcina, 25-OH Vitamina D, Intact PTH, β-CTx, P1NP total</p></div>
+        <div class="menu-panel"><h3>Enfermedad infecciosa</h3><p>HIV Ab/Ag Combi, Sífilis, Chagas, HTLV I+II, H. pylori IgG</p></div>
+        <div class="menu-panel"><h3>Hepatitis</h3><p>HBsAg, Anti-HBs, HBeAg, Anti-HBe, Anti-HBc</p></div>
+        <div class="menu-panel"><h3>Respiratorio</h3><p>2019-nCoV IgG/IgM, SARS-CoV-2 S-RBD IgG, Anticuerpo neutralizante, SARS-CoV-2 Ag</p></div>
       </div>
     </div>
     <div class="slide-foot">
@@ -1345,7 +1403,10 @@
           </div>
         </div>
         <div class="card">
-          <img src="assets/img/abbott-surestep.jpg" alt="SureStep" style="height:200px;">
+          <div class="tox-duo">
+            <img src="assets/img/abbott-surestep.jpg" alt="SureStep">
+            <img src="assets/img/abbott-surestep-2.jpg" alt="SureStep">
+          </div>
           <div class="card-body">
             <h3>SureStep™</h3>
             <ul class="dense-list" style="margin-top:.4rem;">
@@ -1373,8 +1434,12 @@
         <div class="logo-badge sm"><img src="assets/img/abbott-logo.png" alt="Abbott"></div>
       </div>
       <div class="two-col" style="gap:2rem; align-items:center;">
-        <div class="tox-photos one">
-          <img src="assets/img/abbott-sotoxa.jpg" alt="SoToxa">
+        <div class="tox-photos">
+          <img src="assets/img/abbott-sotoxa-equipo.jpg" alt="SoToxa equipo">
+          <div class="tox-duo">
+            <img src="assets/img/abbott-sotoxa-kit2.jpg" alt="SoToxa kit">
+            <img src="assets/img/abbott-sotoxa.jpg" alt="SoToxa kit">
+          </div>
         </div>
         <div>
           <div class="equip-head">
